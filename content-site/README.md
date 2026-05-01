@@ -1,67 +1,68 @@
-# Payload Blank Template
+# Content Site Template
 
-This template comes configured with the bare minimum to get started on anything you need.
+A content-focused website template using Next.js and Payload 3.0 CMS.
 
-## Quick start
+## Tech Stack
 
-This template can be deployed directly from our Cloud hosting and it will setup MongoDB and cloud S3 object storage for media.
+- **Frontend**: Next.js 16, React 19, Tailwind CSS 4
+- **CMS**: Payload 3.0 (PostgreSQL)
+- **UI**: shadcn/ui, Radix UI, Lucide icons
 
-## Quick Start - local setup
+## Getting Started
 
-To spin up this template locally, follow these steps:
+Use `create-feuy-app` to scaffold a new project with this template:
 
-### Clone
+```bash
+npx create-feuy-app@latest
+```
 
-After you click the `Deploy` button above, you'll want to have standalone copy of this repo on your machine. If you've already cloned this repo, skip to [Development](#development).
+Select **Content site** when prompted.
 
-### Development
+## Manual Setup
 
-1. First [clone the repo](#clone) if you have not done so already
-2. `cd my-project && cp .env.example .env` to copy the example environment variables. You'll need to add the `MONGODB_URL` from your Cloud project to your `.env` if you want to use S3 storage and the MongoDB database that was created for you.
+If you already have this template:
 
-3. `pnpm install && pnpm dev` to install dependencies and start the dev server
-4. open `http://localhost:3000` to open the app in your browser
+1. Install dependencies:
 
-That's it! Changes made in `./src` will be reflected in your app. Follow the on-screen instructions to login and create your first admin user. Then check out [Production](#production) once you're ready to build and serve your app, and [Deployment](#deployment) when you're ready to go live.
+```bash
+pnpm install
+```
 
-#### Docker (Optional)
+2. Copy the example environment file:
 
-If you prefer to use Docker for local development instead of a local MongoDB instance, the provided docker-compose.yml file can be used.
+```bash
+cp .env.example .env.local
+```
 
-To do so, follow these steps:
+3. Add your database connection string:
 
-- Modify the `MONGODB_URL` in your `.env` file to `mongodb://127.0.0.1/<dbname>`
-- Modify the `docker-compose.yml` file's `MONGODB_URL` to match the above `<dbname>`
-- Run `docker-compose up` to start the database, optionally pass `-d` to run in the background.
+```env
+DATABASE_URI=postgresql://user:password@localhost:5432/mydb
+```
 
-## How it works
+4. Start the development server:
 
-The Payload config is tailored specifically to the needs of most websites. It is pre-configured in the following ways:
+```bash
+pnpm run dev
+```
 
-### Collections
+Visit:
+- **Frontend**: http://localhost:3000
+- **Admin UI**: http://localhost:3000/admin
 
-See the [Collections](https://payloadcms.com/docs/configuration/collections) docs for details on how to extend this functionality.
+## Project Structure
 
-- #### Users (Authentication)
+```
+├── app/                    # Next.js App Router
+├── components/             # UI components
+│   ├── ui/               # shadcn/ui components
+│   └── tutorial/        # Tutorial components
+├── emails/               # Email templates (React Email)
+├── payload/              # Payload configuration
+│   ├── collections/      # Collection definitions
+│   └── globals/         # Global configurations
+```
 
-  Users are auth-enabled collections that have access to the admin panel.
+## License
 
-  For additional help, see the official [Auth Example](https://github.com/payloadcms/payload/tree/3.x/examples/auth) or the [Authentication](https://payloadcms.com/docs/authentication/overview#authentication-overview) docs.
-
-- #### Media
-
-  This is the uploads enabled collection. It features pre-configured sizes, focal point and manual resizing to help you manage your pictures.
-
-### Docker
-
-Alternatively, you can use [Docker](https://www.docker.com) to spin up this template locally. To do so, follow these steps:
-
-1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
-1. Next run `docker-compose up`
-1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
-
-That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
-
-## Questions
-
-If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
+[ISC](https://github.com/feuuy/templates/blob/main/LICENSE)
