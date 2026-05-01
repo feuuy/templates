@@ -8,6 +8,7 @@ import color from "picocolors";
 
 const TEMPLATES = {
   "content-site": "feuuy/templates/content-site",
+  "web-application": "feuuy/templates/web-application",
 } as const;
 
 type TemplateKey = keyof typeof TEMPLATES;
@@ -39,6 +40,11 @@ async function main() {
         value: "content-site",
         label: "Content site",
         hint: "Blog, company website, docs — Next.js + Payload",
+      },
+      {
+        value: "web-application",
+        label: "Web application",
+        hint: "Server-authoritative, stateful web application - Next.js + Supabase",
       },
     ],
   });

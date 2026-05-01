@@ -59,6 +59,7 @@ Then visit:
 | Template | Description |
 |----------|-------------|
 | `content-site` | Blog, company website, or docs — Next.js + Payload 3.0 CMS |
+| `web-application` | Server-authoritative, stateful web application — Next.js + Supabase |
 
 More templates coming soon.
 
